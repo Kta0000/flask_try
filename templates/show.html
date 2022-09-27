@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>{{ message }}</h1>
+    <p>タイトル：{{post.title}}</p>
+    {{ post.content | markdown }}
+
+    {% if post.number == 1 %} 
+        <p><a href='/'>一覧に戻る</a> | <a href='/edit/{{ post.id}}'>編集</a> | <a href='/garbage/{{post.id}}'>ゴミ箱</a></p>
+    {% else: %}
+        <p><a href='/'>一覧に戻る</a> | <a href='/recover/{{ post.id}}'>復元</a> | <a href='/destroy/{{post.id}}'>削除</a></p>
+    {% endif %}
+
+{% endblock %}
